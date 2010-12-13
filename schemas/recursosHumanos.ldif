@@ -1,0 +1,7 @@
+dn: cn=recursosHumanos
+objectClass: olcSchemaConfig
+cn: recursosHumanos
+olcAttributeTypes: {0}( 1.3.6.1.4.1.36591.2.3.3.2 NAME 'lotacaoSecundaria' DESC 'Descreve uma vinculação secundária da pessoa, além da vinculação administrativa.' SUP distinguishedName )
+olcAttributeTypes: {1}( 1.3.6.1.4.1.36591.2.3.3.3 NAME 'matricula' DESC 'Matricula do servidor, caso esteja associado ao RH da prefeitura. Se estiver em branco pode significar que é terceirizado.' SUP description )
+olcAttributeTypes: {2}( 1.3.6.1.4.1.36591.2.3.3.1 NAME 'cpf' DESC 'CPF da pessoa' SUP employeeNumber )
+olcObjectClasses: {0}( 1.3.6.1.4.1.36591.2.4.3.1 NAME 'recursoHumano' DESC 'Representa todas as pessoas que trabalham para a adminsitração municipal, sejam concursadas, comissionadas, cedidas ou terceirizadas.' SUP ( inetOrgPerson $ account ) STRUCTURAL MAY ( lotacaoSecundaria $ matricula $ cpf $ uidNumber ) )

@@ -1,0 +1,9 @@
+dn: cn=localizacaoFisica
+objectClass: olcSchemaConfig
+cn: localizacaoFisica
+olcAttributeTypes: {0}( 1.3.6.1.4.1.36591.2.3.2.2 NAME 'ser' DESC 'Identificação da Regional' SUP cn )
+olcAttributeTypes: {1}( 1.3.6.1.4.1.36591.2.3.2.1 NAME 'dominioAutenticacao' DESC 'Descreve o dominio de autenticacao a ser usado em uma determinada localizacao fisica' SUP distinguishedName )
+olcObjectClasses: {0}( 1.3.6.1.4.1.36591.2.4.2.1 NAME 'regional' DESC 'Area Geografica de uma Regional' SUP ( objetoEspacial $ top ) STRUCTURAL MUST ser MAY description )
+olcObjectClasses: {1}( 1.3.6.1.4.1.36591.2.4.2.2 NAME 'imovel' DESC 'Um imovel, normalmente representado por um contrato ou escritura.' SUP ( locality $ relacionamentoGrupo $ objetoEspacial ) STRUCTURAL MUST ( l $ postalAddress ) MAY dominioAutenticacao )
+olcObjectClasses: {2}( 1.3.6.1.4.1.36591.2.4.2.3 NAME 'fracaoImovel' DESC 'Utilizado para segmentar um imovel quando um mesmo contrato/escritura tem áreas isoladas.' SUP ( locality $ relacionamentoGrupo $ objetoEspacial ) STRUCTURAL MUST l MAY dominioAutenticacao )
+olcObjectClasses: {3}( 1.3.6.1.4.1.36591.2.4.2.4 NAME 'unidadeLocalizacao' DESC 'Unidade mínima de identificação do espaço, normalmente entendido como uma sala ou um segmento de área comum.' SUP ( room $ relacionamentoGrupo $ objetoEspacial ) STRUCTURAL MAY dominioAutenticacao )
