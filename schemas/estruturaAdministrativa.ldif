@@ -1,7 +1,8 @@
-dn: cn=estruturaAdministrativa
+dn: cn=estruturaAdministrativa,cn=schema,cn=config
 objectClass: olcSchemaConfig
 cn: estruturaAdministrativa
 olcAttributeTypes: {0}( 1.3.6.1.4.1.36591.2.3.1.1 NAME 'papelDoResponsavel' DESC 'Aponta para o papel que representa o responsavel por essa unidade' SUP distinguishedName )
-olcObjectClasses: {0}( 1.3.6.1.4.1.36591.2.4.1.1 NAME 'unidadeGestao' DESC 'Orgao ou Coordenadoria' SUP organization STRUCTURAL MAY papelDoResponsavel )
-olcObjectClasses: {1}( 1.3.6.1.4.1.36591.2.4.1.2 NAME 'unidadeAdminstrativa' DESC 'Estrutura interna das unidades de gestao' SUP organizationalUnit STRUCTURAL MAY papelDoResponsavel )
+olcAttributeTypes: {1}( 1.3.6.1.4.1.36591.2.3.1.2 NAME 'idEstruturaSPU' DESC 'Identificação do registro na estrutura do SPU' SUP distinguishedName )
+olcObjectClasses: {0}( 1.3.6.1.4.1.36591.2.4.1.1 NAME 'unidadeGestao' DESC 'Orgao ou Coordenadoria' SUP ( organization $ relacionamentoGrupo ) STRUCTURAL MAY papelDoResponsavel )
+olcObjectClasses: {1}( 1.3.6.1.4.1.36591.2.4.1.2 NAME 'unidadeAdminstrativa' DESC 'Estrutura interna das unidades de gestao' SUP ( organizationalUnit $ relacionamentoGrupo ) STRUCTURAL MAY papelDoResponsavel )
 olcObjectClasses: {2}( 1.3.6.1.4.1.36591.2.4.1.3 NAME 'papelOrganizacional' DESC 'Papeis existentes dentro da organizacao' SUP ( organizationalRole $ relacionamentoGrupo ) STRUCTURAL MAY gidNumber )
