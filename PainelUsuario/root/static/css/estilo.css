@@ -526,17 +526,20 @@ select#dominio{
 }
 div.controls{
 	text-align: center;
-	padding: 3px 0!important;
+	padding: 5px 0!important;
+   border-top: 1px solid #CCCCCC;
+   margin-top: 15px;
+   text-align: center;
 }
 
 /* Colunas para o fieldset Dados Pessoais */
 #inform_col1{
-	width: 39.5%;
+	width: 35%;
 	float: left;
 	border-right:1px solid #ccc
 }
 #inform_col2{
-	max-width: 60%;
+	width: 63%;
 	float: right;
 }
 
@@ -569,4 +572,17 @@ div.controls{
 	padding: 10px;
 	text-align: center;
 	font-size: 1.2em;
+}
+.label_block{
+	float: left;
+	margin-top: 10px;
+	font-weight: bold;
+}
+.input_block{
+	width: 95%; 
+}
+.info_login{
+	padding: 3px;
+	background: #ddd;
+	width: 95%;
 }

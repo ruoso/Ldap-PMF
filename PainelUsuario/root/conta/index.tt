@@ -4,67 +4,70 @@
 <form method="post" action="[% c.uri_for_action('/conta/update') %]">
 <fieldset class="container_16 ui-corner-all">
 <legend>Dados Pessoais</legend>
-<dl id="inform_col1">
+<div id="inform_col1">
+	<div class='ui-corner-all info_login'>
+		<span class="bold box">Login: </span>[% c.user.get('uid') %] - <a href="[% c.uri_for_action('/conta/senha') %]">alterar senha</a> 
+	</div>
+	<div class='full-me'>
+		<span class='label_block'>Nome Social: </span>
+		<input type="text" name="ldap_cn" id="ldap_cn" value="[% c.user.get('cn') | html %]" class="input_block"/> 
+	</div>
+	<div class='full-me'>
+		<span class='label_block'>Nome próprio: </span>
+		<input type="text" name="ldap_givenname" id="ldap_givenname" value="[% c.user.get('givenname') | html %]" class="input_block" />
+	</div>
+	<div class='full-me'>
+		<span class='label_block'>Sobrenome: </span>
+		<input type="text" name="ldap_sn" id="ldap_sn" value="[% c.user.get('sn') | html %]" class="input_block" />
+	</div>
+	<div class='full-me'>
+		<span class='label_block'>Email: </span>
+		<input type="text" name="ldap_email" id="ldap_email" value="[% c.user.get('email') | html %]" class="input_block" />
+	</div>
+	<div class='full-me'>
+		<span class='label_block'>Telefone: </span>
+		<input type="text" name="ldap_telephonenumber" id="ldap_telephonenumber" value="[% c.user.get('telephonenumber') | html %]" class="input_block" />
+	</div>
+	<div class='full-me'>
+		<span class='label_block'>Celular: </span>
+		<input type="text" name="ldap_mobile" id="ldap_mobile" value="[% c.user.get('mobile') | html %]" class="input_block" />
+	</div>
+	<div class='full-me'>
+		<span class='label_block'>Matricula: </span>
+		<input type="text" name="ldap_matricula" id="ldap_matricula" value="[% c.user.get('matricula') | html %]" class="input_block" />
+	</div>
+</div>
 
- <dt>Login</dt>
- <dd>[% c.user.get('uid') %] - <a href="[% c.uri_for_action('/conta/senha') %]">alterar senha</a></dd>
-
- <dt><label for="ldap_cn">Nome social</label></dt>
- <dd><input type="text" name="ldap_cn" id="ldap_cn" value="[% c.user.get('cn') | html %]" /></dd>
-
- <dt><label for="ldap_givenname">Nome próprio</label></dt>
- <dd><input type="text" name="ldap_givenname" id="ldap_givenname" value="[% c.user.get('givenname') | html %]" /></dd>
-
- <dt><label for="ldap_sn">Sobrenome</label></dt>
- <dd><input type="text" name="ldap_sn" id="ldap_sn" value="[% c.user.get('sn') | html %]" /></dd>
-
- <dt><label for="ldap_email">Email</label></dt>
- <dd><input type="text" name="ldap_email" id="ldap_email" value="[% c.user.get('email') | html %]" /></dd>
-
- <dt><label for="ldap_telephonenumber">Telefone</label></dt>
- <dd><input type="text" name="ldap_telephonenumber" id="ldap_telephonenumber" value="[% c.user.get('telephonenumber') | html %]" /></dd>
-
- <dt><label for="ldap_mobile">Celular</label></dt>
- <dd><input type="text" name="ldap_mobile" id="ldap_mobile" value="[% c.user.get('mobile') | html %]" /></dd>
-
- <dt><label for="ldap_matricula">Matricula</label></dt>
- <dd><input type="text" name="ldap_matricula" id="ldap_matricula" value="[% c.user.get('matricula') | html %]" /></dd>
- </dl>
-
-	<dl id="inform_col2">
+	<div id="inform_col2">
 	[% IF c.user.has_attribute('memberof') %]
-	 <dt>Grupos</dt>
-	 <dd>
+	 <h5>Grupos</h5>
+	 
 		 <ul>
 		  [% FOREACH g IN c.user.get('memberof') -%]
 		  <li>[% c.model('LDAP').decompose_dn(g).reverse.join(' - ') %]</li>
 		  [% END -%]
 		 </ul>
-	 </dd>
+	 
 	[% END %]
 	
 	[% IF c.user.has_attribute('idconsistrh') %]
-	 <dt>RH</dt>
-	 <dd>
+	 <h5>RH</h5>
 	 <ul>
 	  [% FOREACH g IN c.user.get('idconsistrh') -%]
 	  <li>[% g %]</li>
 	  [% END -%]
 	 </ul>
-	 </dd>
-	[% END %]
+	 [% END %]
 	
 	[% IF c.user.has_attribute('idusuariospu') %]
-	 <dt>SPU</dt>
-	<dd> 
+	 <h5>SPU</h5>
 	 <ul>
 	  [% FOREACH g IN c.user.get('idusuariospu') -%]
 	  <li>[% g %]</li>
 	  [% END -%]
 	 </ul>
-	 </dd>
 	[% END %]
-	</dl>
+	</div>
 
 <div class="clear"></div>
 <div class="controls">
