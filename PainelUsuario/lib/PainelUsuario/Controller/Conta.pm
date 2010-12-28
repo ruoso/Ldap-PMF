@@ -8,24 +8,26 @@ BEGIN { extends 'Catalyst::Controller' }
 
 sub base :Chained('/authbase') :PathPart('conta') :CaptureArgs(0) {}
 
-sub index :Chained('base') :PathPart('') :Args(0) {}
-
-sub update :Chained('base') :PathPart :Args(0) {
+sub index :Chained('base') :PathPart('') :Args(0) {
   my ($self, $c) = @_;
+  if (my $mesg = $c->flash->{sucesso}) {
+    $c->stash->{sucesso} = $mesg;
+  }
+  return unless $c->req->method eq 'POST';
   try {
     my %args =
       map { my $k = lc($_);
             $k =~ s/^ldap_//;
             ($k => $c->req->param($_))
           }
-        keys %{$c->req->params};
+        grep { /^ldap_/ }
+          keys %{$c->req->params};
     $c->model('LDAP')->update_self($c->user, \%args);
-    $c->stash->{sucesso} = 'dados alterados';
+    $c->flash->{sucesso} = 'dados alterados';
     $c->res->redirect($c->uri_for_action('/conta/index'));
   } catch {
     $c->stash->{erro} = 'erro-desconhecido';
     $c->stash->{errolong} = $_;
-    $c->stash->{template} = 'conta/index.tt';
   };
 }
 
