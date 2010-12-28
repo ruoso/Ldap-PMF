@@ -84,4 +84,13 @@ sub update_self {
   die 'change-failed: '.$mesg->error if $mesg->is_error;
 }
 
+sub decompose_dn {
+  my ($self, $dn) = @_;
+  my $base = $self->ldap_config->{base};
+  # remove o sufixo.
+  my $prefix = substr($dn, 0, 0 - length($base));
+  return [ map { (split /=/)[1] }
+           split /,/, $prefix  ];
+}
+
 1;

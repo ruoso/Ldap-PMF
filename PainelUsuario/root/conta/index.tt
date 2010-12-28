@@ -40,7 +40,7 @@
 	 <dd>
 		 <ul>
 		  [% FOREACH g IN c.user.get('memberof') -%]
-		  <li>[% g %]</li>
+		  <li>[% c.model('LDAP').decompose_dn(g).reverse.join(' - ') %]</li>
 		  [% END -%]
 		 </ul>
 	 </dd>
