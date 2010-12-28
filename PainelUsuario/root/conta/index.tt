@@ -1,7 +1,7 @@
 [% INCLUDE 'header-auth.tt' %]
 
    
-<form method="post" action="[% c.uri_for_action('/conta/update') %]">
+<form method="post" action="[% c.uri_for_action('/conta/index') %]">
 <fieldset class="container_16 ui-corner-all">
 <legend>Dados Pessoais</legend>
 <div id="inform_col1">

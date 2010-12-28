@@ -1,2 +1,8 @@
 [% SET mensagens =
-   { 'all-fields' => 'Preencha todos os campos' } -%]
+   { 'all-fields' => 'Preencha todos os campos',
+     'dados alterados' => 'Alteração realizada com sucesso',
+     'erro-desconhecido' => 'Erro ao realizar operação',
+     'senha alterada' => 'Senha alterada com sucesso',
+     'senha-errada' => 'Senha atual incorreta',
+     'didnt-match' => 'Novas senhas não conferem',
+   } -%]
