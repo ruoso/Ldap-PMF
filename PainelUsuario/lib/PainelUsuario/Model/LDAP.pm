@@ -33,7 +33,8 @@ sub buscar_dominios_auth {
 
 sub is_operador {
   my ($self, $user) = @_;
-  return grep { $_ eq $self->role_operador } @{$user->memberof};
+  return unless $user->has_attribute('memberof');
+  return grep { $_ eq $self->role_operador } @{$user->get('memberof')};
 }
 
 sub change_self_password {
@@ -50,7 +51,7 @@ sub change_self_password {
 }
 
 my @update_fields =
-  qw( cn sn givenname email
+  qw( cn sn givenname email matricula
       telephonenumber mobile );
 
 sub update_self {
