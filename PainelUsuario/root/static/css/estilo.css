@@ -199,10 +199,11 @@ dt, dd {
     float: left;
 }
 dt {
-    width: 12em;
+    width: 6.7em;
     clear: both;
-    text-align: right;
+    text-align: left;
     margin-right: 1em;
+    line-height: 2em;
 }
 dl dt, dl dd, ol.historico li {
     margin-bottom:1em;
@@ -558,4 +559,14 @@ select#dominio{
 div.controls{
 	text-align: center;
 	padding: 3px 0!important;
+}
+
+/* Colunas para o fieldset Dados Pessoais */
+#inform_col1{
+	width: 40%;
+	float: left;
+}
+#inform_col2{
+	max-width: 60%;
+	float: right;
 }

@@ -19,7 +19,7 @@
 	   	</div>
 	   	<div class='full-me'>
 				<label><span class='rotulo  grid_1'>Senha</span>
-					<input name="Password" type="password" class='grid_3' />
+					<input name="password" type="password" class='grid_3' />
 				</label>
 			</div>
 			<div class='controls full-me'>
