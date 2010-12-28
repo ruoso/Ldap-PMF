@@ -1,0 +1,657 @@
+/*
+    Name: 
+    Date: 
+    Description: Layout para o sistema
+    Version: 0.1
+    Author: Prefeitura Municipal de Fortaleza
+    Autor URI: http://www.fortaleza.ce.gov.br
+*/
+
+/* Classes Auxiliares */
+.clear{
+    height: 1px;
+    clear: both;
+
+}
+.full-me{
+    width: 100%;
+}
+.bold{
+    font-weight: bold;
+}
+.hidden{
+    display: none;
+}
+/* Básico */
+html {
+    height: 100%;
+}
+body {
+    font-family: helvetica;
+    background-color: #EEE;
+    color: #333333;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    line-height: 1.429;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 13px;
+    height: 100%;
+}
+
+/* Cabeçalhos */
+h1, h2, h3, h4, h5, h6 {
+    font-weight:normal;
+    color:#111;
+}
+h1 {
+    font-size:3.5em;
+    line-height:1;
+    margin-bottom:0.5em;
+}
+h2 {
+    font-size:2.5em;
+    margin-bottom:0.75em;
+}
+h3 {
+    font-size:2em;
+    line-height:1;
+    margin-bottom:1em;
+}
+h4 {
+    font-size:1.7em;
+    line-height:1.25;
+    margin-bottom:1.25em;
+}
+h5 {
+    font-size:1em;
+    font-weight:bold;
+    margin-bottom:1.5em;
+}
+h6 {
+    font-size:1em;
+    font-weight:bold;
+}
+
+/* Links */
+a {
+    outline: 0;
+    font-weight: bold;
+}
+a img {
+    border: 0px;
+    text-decoration: none;
+}
+a:link, a:visited {
+    color: #000;
+    padding: 0 1px;
+    text-decoration: underline;
+}
+a:hover, a:active {
+    color: #666;
+    text-decoration: none;
+}
+
+/* Forms */
+dl {
+    margin-bottom: 1em
+}
+dl.form dt {
+    padding-top: 0.75em;
+}
+dl.form dt, dl.form dd {
+    margin-bottom: 0.1em
+}
+label {
+    font-weight: normal;
+}
+input, select, textarea {
+    font-family: Helvetica, Arial, sans-serif;
+    padding: 0.25em 0;
+    text-indent: 3px;
+    font-size: 1em;
+}
+.middleText {
+    width: 30em;
+}
+.largeText {
+    width: 50em;
+}
+select {
+    text-indent: 0px;
+    border: 1px solid #aaa;
+    height: 25px;
+    font-size: 15px
+}
+label.required {
+    font-weight: bold;
+}
+.campoTexto {
+    padding-top: 0.75em;
+}
+dd label.error {
+    margin: 0;
+    border: 0;
+    background: none;
+    padding: 0;
+    display: block
+}
+input.error, textarea.error {
+    margin: 0.5em 0;
+    padding: 0.25em 0;
+    border-width: 1px;
+    border-color: #8a1f11;
+    background: #FBE3E4
+}
+dd a.dp-choose-date {
+    margin-left: 0.5em;
+}
+
+/* Botões */
+.buttons {
+    border-top: 1px solid #DDD;
+    padding: 1%;
+    margin: 1% 0;
+    background: #FAFAFA;
+    clear: left;
+}
+.buttons li {
+    float: left;
+    margin-right: 0.5em;
+}
+.buttons .description {
+    padding-top: 0.70em;
+}
+.buttons.grid {
+    margin-bottom: 0;
+}
+button {
+    font-family: Helvetica, Arial, sans-serif;
+    padding: 0.5em 2em;
+    font-size: 1em;
+}
+
+/* Tabelas */
+table.grid {
+    width: 100%;
+    margin-top: 1%;
+    border-collapse:collapse;
+}
+.grid tr th {
+    background: #777;
+    border-color: #666;
+    border-width: 1px 0;
+    border-style: solid;
+    color: white;
+    font-weight: normal;
+    text-shadow: 1px 1px #444;
+}
+.grid .tableFilter th {
+    background: #888;
+    border-color: #777;
+}
+.grid .tableFilter th * {
+    margin: 0;
+    border: 0;
+}
+.grid tr td, .grid tr th {
+    padding: 0.5em;
+}
+.grid tr td {
+    border-color: #E1E1E3;
+    border-style: solid;
+    border-width: 1px 0;
+}
+.grid .odd {
+    background: #F5F5F5;
+}
+.grid tbody a {
+    margin-right: 12px;
+}
+.grid tfoot tr td {
+    border: 0;
+}
+.grid .marked td {
+    background: #FBEE99;
+    border-color: #ded388
+}
+.grid .colunaFixa input {
+    margin: 0 auto;
+    display: block;
+}
+
+/* Páragrafos */
+p {
+    margin-bottom: 1.143em;
+}
+* p:last-child {
+    margin-bottom: 0;
+}
+.comentario {
+    padding-top: 5px;
+    margin-top: 0.1em;
+}
+blockquote {
+    background: #DDD;
+    color: #333;
+    padding: 0.5em 0.75em;
+    margin: 0 0 0.5em 10em;
+    float: left;
+}
+
+/* Listas */
+dt, dd {
+    float: left;
+}
+dt {
+    width: 12em;
+    clear: both;
+    text-align: right;
+    margin-right: 1em;
+}
+dl dt, dl dd, ol.historico li {
+    margin-bottom:1em;
+}
+dd ul li {
+    padding: 0.25em 0;
+}
+dd ul li.even {
+    background: #FAFAFA;
+}
+dd ul li.odd {
+    background: #F5F5F5;
+}
+dd dl dt, dd dl dd {
+    margin: 0 0 0.2em;
+    padding-top: 0;
+}
+dd dl dt {
+    text-align: left;
+    width: auto;
+    margin-right: 0.25em;
+}
+
+/* Code */
+code {
+    margin-bottom: 1.25em;
+    display: block
+}
+
+/* Tags de Texto */
+strong, b {
+    font-weight: bold;
+}
+em, i {
+    font-style: italic;
+}
+ol.orderedList {
+    list-style-type: decimal;
+    margin-left: 3em;
+    margin-bottom: 1.5em
+}
+
+/* Seleções */
+::-moz-selection {
+    background: #000;
+    color: #fff;
+}
+::selection {
+    background: #000;
+    color: #fff;
+}
+
+/* Estrutura */
+#section, #footer {
+    padding: 1%;
+}
+#container {
+    padding: 0;
+    min-height: 100%;
+    position: relative;
+}
+
+/* Cabecalho */
+#header {
+    position: relative;
+    background: #333;
+    padding: 10px 20px 0 20px;
+    border-bottom: 1px solid #444;
+    text-shadow: 1px 1px 1px #000;
+    height: 50px;
+}
+#header h1 {
+    height: 44px;
+    background: url(images/logoFortaleza.png) no-repeat 0 50%;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 0;
+    width: 80px;
+    text-indent: -99999px;
+    overflow: hidden;
+    float: left;
+    text-decoration: none;
+}
+#header h1 a {
+    text-decoration: none;
+    color: white;
+}
+#header h1 a:hover {
+    background: none;
+    text-shadow: 1px 1px 1px #000;
+    text-decoration: underline;
+}
+#header h4 {
+    color: #fff;
+    float: right;
+    margin-top: 20px;
+}
+#usuario {
+    background: none repeat scroll 0 0 #222;
+    color: white;
+    float: right;
+    font-family: verdana;
+    font-size: 0.8em;
+    height: 25px;
+    line-height: 1.75em;
+    margin: -10px;
+    text-align: right;
+    width: 250px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#usuario a {
+    color: white;
+}
+#usuario a:hover {
+    background: transparent;
+}
+
+/* Menu */
+
+ul.dropdown ul {
+    width: 175px;
+}
+.menu_princ ul li ul{
+    width: 160px!important;
+}
+
+.menu_princ{
+    margin-left: 20px;
+    padding: 0
+}
+
+.menu_princ li{
+    text-indent: 15px;
+}
+
+#nav{
+    background: #111;
+    width: 100%;
+    float: left;
+}
+
+
+ul.dropdown ul a {
+    padding: 4px 5px 4px 14px;
+    width: 155px;
+}
+.item_menu{
+    background: url(images/page_white.png);
+    background-position: 10px 6px;
+    background-repeat: no-repeat;
+}
+.alertIcon{
+    float:left;
+    margin:3px 7px 20px 0;
+}
+/*Ícones para os ítens de menu*/
+
+.pesquisar { background-image: url(images/magnifier.png); }
+.cadastro { background-image: url(images/add.png); }
+.cad_usuario { background-image: url(images/user_add.png); }
+.atencaobasica { background-image: url(images/us.png); }
+.ajuda { background-image: url(images/help.png); }
+.sair { background-image: url(images/door_out.png); }
+
+/*Fim dosÍcones para os ítens de menu*/
+
+
+/* Fix IE. Hide from IE Mac \*/
+* html ul li { float: left; }
+* html ul li a { height: 1%; }
+/* End */
+
+.menu_princ li:hover ul {
+    display: block;
+}
+
+/* Div de conteúdo */
+#content{
+    height: 100%;
+    padding: 40px 20px 40px 20px;
+}
+
+/* Mensagem */
+div#message {
+    margin: 0 0 2% 0;
+    border-width: 1px 0;
+}
+
+/* Footer */
+#footer {
+    background: #333;
+    font-size: 1em;
+    margin-top: -25px;
+    border-top: 2px solid #666;
+    padding: 2px;
+    text-align: right;
+}
+#footer p {
+    float: right;
+    margin-bottom: 0;
+}
+#footer address {
+    float: left;
+    margin-right: 12px;
+}
+#footer ul, #footer ul li {
+    float: left;
+}
+#footer ul li {
+    margin: 0 12px;
+}
+#footer span {
+    color: #ccc;
+    font-size: 1em;
+    font-weight: normal;
+    font-family: verdana, arial;
+}
+/* estilos para o login */
+#caixa_login{
+    width: 700px;
+    margin: 8% auto;
+    border-radius:5px;
+}
+#login_col1{
+    width: 250px;
+    height: 100%;
+    border-right: 1px solid #ccc;
+    float: left;
+    position: relative;
+    margin-left: 0;
+    margin-left: 0;
+}
+#login_col2{
+    width: 295px;
+    height: 100%;
+    float: right;
+}
+
+#caixa_login .field{
+    width: 240px;
+    padding-right: 10px;
+}
+#fieldset_login{
+    -moz-border-radius:5px;
+    background: #fff
+}
+#caixa_login span.lbl{
+    display: block;
+    float: left;
+    line-height: 15px;
+    margin-top: 6px;
+    margin-bottom: -6px;
+    text-align: left;
+    width: 200px;
+    font-weight: bold;
+    text-shadow:1px 1px #ccc;
+    cursor: pointer;
+}
+#caixa_login input.text-box{
+    width: 230px;
+    height: 25px;
+    float: left;
+    font-size: 15px;
+    margin-top: 10px;
+}
+#caixa_login .login_bt{
+    float: left;
+    padding: 5px 10px;
+}
+#caixa_login .login_bt:hover{
+
+}
+#login_col1 a.rec_senha{
+    background: url(images/lock.png) no-repeat 8px 8px;
+    text-indent: 20px;
+    display: block;
+    float: left;
+    height: 25px;
+    line-height: 16px;
+    margin-left: 5px;
+    padding: 8px;
+    text-indent: 20px;
+    width: 10.55em;
+}
+.field select{
+    width: 230px;
+    padding: 6px;
+    height: 32px;
+}
+/* Estilos para telas gerais */
+.min_960{
+    min-width: 960px;
+}
+.bt-pesquisar{
+    background-color: #ddd;
+    background-image: url("images/magnifier.png");
+    background-repeat: no-repeat;
+    background-position: 10px 7px;
+    border-bottom-color: #999;
+    border-right-color: #999;
+    text-shadow:1px 2px #fff;
+
+}
+.bt-pesquisar:hover{
+    background-color: #eee;
+    background-image: url("images/magnifier.png");
+    background-repeat: no-repeat;
+    background-position: 10px 7px;
+    border-bottom-color: #999;
+    border-right-color: #999;
+    text-shadow:1px 2px #fff;
+    color: #000;
+}
+.instrucoes{
+    text-align: left;
+    padding: 0 18px;
+    border: solid 1px #ccc;
+    background: #fff;
+    margin: 10px auto;
+}
+.instrucoes_header{
+    text-align: center;
+    padding: 18px;
+    background: #ddd;
+    margin: 0 -18px;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 15px;
+    padding: 5px;
+    padding-left: 32px;
+    cursor: pointer;
+}
+.instrucoes_content{
+    margin: 15px;
+}
+.instrucoes_aberta{
+    background-image: url(images/up.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position: 99%;
+}
+.instrucoes_fechada{
+    background-image: url(images/down.png);
+    background-repeat: no-repeat;
+    background-position: 99%;
+}
+.link-info{
+    width: 15px;
+    height: 16px;
+    text-indent: -99999px;
+    overflow: hidden;
+    display: block;
+    background: url(images/info.png);
+    float: left;
+    margin-left: 10px;
+}
+legend{
+    padding-left:5px;
+    padding-right: 5px;
+}
+fieldset{
+    max-width: 80%;
+    margin: 10px auto;
+    text-align: left;
+    background: #f8f8f8;
+}
+
+#content .field{
+    float: left;
+    text-align: left;
+}
+#content .lbl{
+    float: left;
+}
+#content .text-box{
+    clear: left;
+    height: 22px;
+    margin-top: 1px;
+}
+.button-seach-down{
+    margin-top: 20px;
+}
+/*Correções para adequar as Abas ao layout */
+.ui-tabs-panel fieldset{
+    /*width: 95%;*/
+    max-width: 95%;
+    padding: 10px 0;
+}
+.ui-tabs, .ui-tabs-nav{
+    background: none;
+    border: none;
+    margin-top: -42px;
+    padding-left: 0;
+    padding-right: 0px;
+}
+.ui-tabs-panel{
+    background: #fff!important;
+    border: 1px solid #bbb!important;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+.ui-tabs{
+    margin-top: 15px;
+    font-size: 12px;
+}

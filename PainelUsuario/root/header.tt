@@ -1,5 +1,20 @@
-<HTML>
- <HEAD>
-  <TITLE>Painel de Usuário</TITLE>
- </HEAD>
- <BODY>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>Painel de Usuário</title>
+        <link rel="stylesheet" href="[% c.uri_for('/static/css/reset.css') %]">
+        <link rel="stylesheet" href="[% c.uri_for('/static/css/forms.css') %]">        
+        <link rel="stylesheet" href="[% c.uri_for('/static/css/typography.css') %]">
+        <link rel="stylesheet" href="[% c.uri_for('/static/css/estilo.css') %]">
+    </head>
+    <body>
+    <div id="container">
+            <div id="header">
+                <h1>Prefeitura de Fortaleza</h1>
+                    <div id="usuario" class="ui-corner-bottom">
+                        <img src="images/jonh-doe.png" alt="usuário" />
+                        <a href="#">Dados do Usuário</a>
+                    </div>
+                <?php } ?>
+            </div><!-- Fim da Div Header -->
+            <div id="conteiner">            

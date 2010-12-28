@@ -1,2 +1,7 @@
- </BODY>
-</HTML>
+				</div><!-- Fim da Div Content -->
+        </div><!-- Fim da Div Conteiner -->
+        <div id="footer">
+            <span class="sis_version">Versão 1.0</span>
+        </div><!-- Fim da Div footer -->
+    </body>
+</html>
