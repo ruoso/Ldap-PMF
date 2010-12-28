@@ -29,11 +29,12 @@ sub senha :Chained('base') :PathPart :Args(0) {
       $c->model('LDAP')->change_self_password($c->user, $c->req->param('senha_atual'), $c->req->param('senha1'));
       $c->stash->{sucesso} = 'senha alterada';
     } catch {
-      when ('bind-failed') {
+      when (/^bind-failed/) {
         $c->stash->{erro} = 'senha-errada';
       }
       default {
         $c->stash->{erro} = 'erro-desconhecido';
+        $c->stash->{errolong} = $_;
       }
     };
   }

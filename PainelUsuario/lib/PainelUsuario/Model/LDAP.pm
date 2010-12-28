@@ -38,13 +38,15 @@ sub is_operador {
 
 sub change_self_password {
   my ($self, $user, $curr_password, $new_password) = @_;
-  my $encrypted = '{SHA}'.sha1_base64($new_password);
+  my $encrypted = sha1_base64($new_password);
+  $encrypted .= '=' while (length($encrypted) % 4);
   my $host = $self->ldap_config->{host};
   my $ldap = Net::LDAP->new($host, %{$self->{ldap_config}})
     or die "$@";
-  my $mesg = $ldap->bind($user->dn, $curr_password);
+  my $mesg = $ldap->bind($user->dn, password => $curr_password);
   die 'bind-failed' if $mesg->is_error;
-  
+  $mesg = $ldap->modify($user->dn, replace => { userpassword => '{SHA}'.$encrypted });
+  die 'change-failed' if $mesg->is_error;
 }
 
 1;
