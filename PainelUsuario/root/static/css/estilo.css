@@ -6,7 +6,10 @@
     Author: Prefeitura Municipal de Fortaleza
     Autor URI: http://www.fortaleza.ce.gov.br
 */
-
+/* Conteiners extras para o grid */
+.container_6{
+	max-width: 450px;
+}
 /* Classes Auxiliares */
 .clear{
     height: 1px;
@@ -14,7 +17,8 @@
 
 }
 .full-me{
-    width: 100%;
+    min-width: 100%;
+    float: left;
 }
 .bold{
     font-weight: bold;
@@ -92,61 +96,6 @@ a:hover, a:active {
     text-decoration: none;
 }
 
-/* Forms */
-dl {
-    margin-bottom: 1em
-}
-dl.form dt {
-    padding-top: 0.75em;
-}
-dl.form dt, dl.form dd {
-    margin-bottom: 0.1em
-}
-label {
-    font-weight: normal;
-}
-input, select, textarea {
-    font-family: Helvetica, Arial, sans-serif;
-    padding: 0.25em 0;
-    text-indent: 3px;
-    font-size: 1em;
-}
-.middleText {
-    width: 30em;
-}
-.largeText {
-    width: 50em;
-}
-select {
-    text-indent: 0px;
-    border: 1px solid #aaa;
-    height: 25px;
-    font-size: 15px
-}
-label.required {
-    font-weight: bold;
-}
-.campoTexto {
-    padding-top: 0.75em;
-}
-dd label.error {
-    margin: 0;
-    border: 0;
-    background: none;
-    padding: 0;
-    display: block
-}
-input.error, textarea.error {
-    margin: 0.5em 0;
-    padding: 0.25em 0;
-    border-width: 1px;
-    border-color: #8a1f11;
-    background: #FBE3E4
-}
-dd a.dp-choose-date {
-    margin-left: 0.5em;
-}
-
 /* Botões */
 .buttons {
     border-top: 1px solid #DDD;
@@ -219,7 +168,13 @@ table.grid {
     margin: 0 auto;
     display: block;
 }
+/* Formulários */
+label       { font-weight: bold; }
+fieldset    { padding:0 1.4em 1.4em 1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc; }
+legend      { font-weight: bold; font-size:1.2em; margin-top:-0.2em; margin-bottom:1em; }
 
+fieldset, #IE8#HACK { padding-top:1.4em; } 
+legend, #IE8#HACK { margin-top:0; margin-bottom:0; }
 /* Páragrafos */
 p {
     margin-bottom: 1.143em;
@@ -345,6 +300,12 @@ ol.orderedList {
     float: right;
     margin-top: 20px;
 }
+/* Auxiliares */
+.rotulo{
+	line-height: 30px;
+}
+
+/* Estilos Gerais */
 #usuario {
     background: none repeat scroll 0 0 #222;
     color: white;
@@ -366,75 +327,10 @@ ol.orderedList {
     background: transparent;
 }
 
-/* Menu */
-
-ul.dropdown ul {
-    width: 175px;
-}
-.menu_princ ul li ul{
-    width: 160px!important;
-}
-
-.menu_princ{
-    margin-left: 20px;
-    padding: 0
-}
-
-.menu_princ li{
-    text-indent: 15px;
-}
-
-#nav{
-    background: #111;
-    width: 100%;
-    float: left;
-}
-
-
-ul.dropdown ul a {
-    padding: 4px 5px 4px 14px;
-    width: 155px;
-}
-.item_menu{
-    background: url(images/page_white.png);
-    background-position: 10px 6px;
-    background-repeat: no-repeat;
-}
-.alertIcon{
-    float:left;
-    margin:3px 7px 20px 0;
-}
-/*Ícones para os ítens de menu*/
-
-.pesquisar { background-image: url(images/magnifier.png); }
-.cadastro { background-image: url(images/add.png); }
-.cad_usuario { background-image: url(images/user_add.png); }
-.atencaobasica { background-image: url(images/us.png); }
-.ajuda { background-image: url(images/help.png); }
-.sair { background-image: url(images/door_out.png); }
-
-/*Fim dosÍcones para os ítens de menu*/
-
-
-/* Fix IE. Hide from IE Mac \*/
-* html ul li { float: left; }
-* html ul li a { height: 1%; }
-/* End */
-
-.menu_princ li:hover ul {
-    display: block;
-}
-
 /* Div de conteúdo */
 #content{
     height: 100%;
     padding: 40px 20px 40px 20px;
-}
-
-/* Mensagem */
-div#message {
-    margin: 0 0 2% 0;
-    border-width: 1px 0;
 }
 
 /* Footer */
@@ -468,9 +364,7 @@ div#message {
 }
 /* estilos para o login */
 #caixa_login{
-    width: 700px;
-    margin: 8% auto;
-    border-radius:5px;
+	margin-top: 100px;
 }
 #login_col1{
     width: 250px;
@@ -490,6 +384,9 @@ div#message {
 #caixa_login .field{
     width: 240px;
     padding-right: 10px;
+}
+#caixa_login div{
+	padding: 1px 50px;
 }
 #fieldset_login{
     -moz-border-radius:5px;
@@ -654,4 +551,11 @@ fieldset{
 .ui-tabs{
     margin-top: 15px;
     font-size: 12px;
+}
+select#dominio{
+	width: 226px;
+}
+div.controls{
+	text-align: center;
+	padding: 3px 0!important;
 }

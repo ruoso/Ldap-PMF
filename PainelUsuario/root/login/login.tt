@@ -1,15 +1,30 @@
 [% INCLUDE 'header.tt' %]
 
-<form method="post" action="[% c.uri_for_action('/login/login') %]">
-	<label>Usuário <input name="username" /></label>
-	<label>Domínio <select name="dominio">
-
-	[% FOREACH dom IN c.model('LDAP').buscar_dominios_auth -%]
-		<option value="[% dom.dn %]">[% dom.get_value('o') %]</option>
-	[% END -%]
-                </select></label>
-	<label>Senha <input name="Password" type="Password"></label>
-	<input type="submit" value="Entrar" />
-</form>
-
+   <fieldset id='caixa_login' class='container_12 container_6 ui-corner-all'>
+      <legend>Login</legend>
+		<form method="post" action="[% c.uri_for_action('/login/login') %]">
+		<div class='full-me'>
+			<label><span class='rotulo  grid_1'>Usuário</span>
+		   	<input name="username" class='grid_3' />
+			</label>
+		</div>
+			<div class='full-me'>
+				<label><span class='rotulo  grid_1'>Domínio</span>
+			    	<select name="dominio" id='dominio' class='grid_3'>
+					[% FOREACH dom IN c.model('LDAP').buscar_dominios_auth -%]
+						<option value="[% dom.dn %]">[% dom.get_value('o') %]</option>
+					[% END -%]
+		      	</select>
+		   	</label>
+	   	</div>
+	   	<div class='full-me'>
+				<label><span class='rotulo  grid_1'>Senha</span>
+					<input name="Password" type="password" class='grid_3' />
+				</label>
+			</div>
+			<div class='controls full-me'>
+				<input type="submit" value="Entrar" />
+			</div>
+		</form>
+	</fieldset>
 [% INCLUDE 'footer.tt' %]
