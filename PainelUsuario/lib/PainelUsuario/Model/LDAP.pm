@@ -50,7 +50,7 @@ sub change_self_password {
 }
 
 my @update_fields =
-  qw( cn sn givenname email idconsistrh idusuariospu
+  qw( cn sn givenname email
       telephonenumber mobile );
 
 sub update_self {
