@@ -1,4 +1,4 @@
-
+<div id='nav'>
 <UL>
  <LI><A HREF="[% c.uri_for_action('/conta/index') %]">Minha Conta</A></LI>
 [% IF c.model('LDAP').is_operador(c.user) %]
@@ -6,3 +6,6 @@
 [% END %]
  <LI><A HREF="[% c.uri_for_action('/logout') %]">Sair</A></LI>
 </UL>
+</div>
+
+<div id="content"> 

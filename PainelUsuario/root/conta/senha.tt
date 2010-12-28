@@ -4,18 +4,22 @@
 [% erro %][% errolong %]
 [% sucesso %]
 
-<FORM METHOD="POST" ACTION="[% c.uri_for_action('/conta/senha') %]">
-<DL>
-  <DT>Senha Atual:</DT>
-  <DD><INPUT TYPE="PASSWORD" NAME="senha_atual" /></DD>
-  <DT>Nova Senha:</DT>
-  <DD><INPUT TYPE="PASSWORD" NAME="senha1" /></DD>
-  <DT>Confirme a Nova Senha:</DT>
-  <DD><INPUT TYPE="PASSWORD" NAME="senha2" /></DD>
-</DL>
-
-<INPUT TYPE="submit" VALUE="Alterar Senha" />
-
-</FORM>
+<form method="post" action="[% c.uri_for_action('/conta/senha') %]">
+<fieldset class="container_16 ui-corner-all">
+<legend>Alteração de senha</legend>
+<dl>
+  <dt>Senha atual:</dt>
+  <dd><input type="password" name="senha_atual" /></dd>
+  <dt>Nova senha:</dt>
+  <dd><input type="password" name="senha1" /></dd>
+  <dt>Confirmação:</dt>
+  <dd><input type="password" name="senha2" /></dd>
+</dl>
+<div class="clear"></div>
+<div class="controls">
+<input type="submit" value="Alterar senha" />
+</div>
+</fieldset>
+</form>
 
 [% INCLUDE 'footer.tt' %]

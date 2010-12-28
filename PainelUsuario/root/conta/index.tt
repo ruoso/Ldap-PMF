@@ -9,7 +9,7 @@
 <legend>Dados Pessoais</legend>
 <dl id="inform_col1">
 
- <dt>login</dt>
+ <dt>Login</dt>
  <dd>[% c.user.get('uid') %] - <a href="[% c.uri_for_action('/conta/senha') %]">alterar senha</a></dd>
 
  <dt><label for="ldap_cn">Nome social</label></dt>

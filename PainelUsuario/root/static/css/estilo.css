@@ -570,3 +570,15 @@ div.controls{
 	max-width: 60%;
 	float: right;
 }
+
+#nav{
+	background: #111;
+	height: 30px;
+}
+#nav ul li{
+	width: 80px;
+	display: inline;
+}
+#nav a{
+	color: #fff!important;
+}
