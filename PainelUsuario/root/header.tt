@@ -1,5 +1,19 @@
-<HTML>
- <HEAD>
-  <TITLE>Painel de Usuário</TITLE>
- </HEAD>
- <BODY>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <title>Painel de Usuário</title>
+        <link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/css/reset.css') %]" />
+        <link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/css/formsxs.css') %]" />        
+        <link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/css/typography.css') %]" />
+        <link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/css/960.css') %]" />
+        <link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/css/jquery_ui.css') %]" />
+        <link type="text/css" rel="stylesheet" href="[% c.uri_for('/static/css/estilo.css') %]" />
+    </head>
+    <body>
+    <div id="container">
+            <div id="header">
+                <h1>Prefeitura de Fortaleza</h1>
+            </div><!-- Fim da Div Header -->
+            <div id="content">            

@@ -3,64 +3,77 @@
 
 [% erro %][% errolong %]
 [% sucesso %]
+   
+<form method="post" action="[% c.uri_for_action('/conta/update') %]">
+<fieldset class="container_16 ui-corner-all">
+<legend>Dados Pessoais</legend>
+<dl id="inform_col1">
 
-<FORM METHOD="POST" ACTION="[% c.uri_for_action('/conta/update') %]">
-<DL>
+ <dt>login</dt>
+ <dd>[% c.user.get('uid') %] - <a href="[% c.uri_for_action('/conta/senha') %]">alterar senha</a></dd>
 
- <DT>Login</DT>
- <DD>[% c.user.get('uid') %] - <A HREF="[% c.uri_for_action('/conta/senha') %]">Alterar Senha</A></DD>
+ <dt><label for="ldap_cn">Nome social</label></dt>
+ <dd><input type="text" name="ldap_cn" id="ldap_cn" value="[% c.user.get('cn') | html %]" /></dd>
 
- <DT><LABEL FOR="ldap_cn">Nome para Exibição</LABEL></DT>
- <DD><INPUT TYPE="TEXT" NAME="ldap_cn" ID="ldap_cn" VALUE="[% c.user.get('cn') | html %]" /></DD>
+ <dt><label for="ldap_givenname">Nome próprio</label></dt>
+ <dd><input type="text" name="ldap_givenname" id="ldap_givenname" value="[% c.user.get('givenname') | html %]" /></dd>
 
- <DT><LABEL FOR="ldap_givenName">Nome Próprio</LABEL></DT>
- <DD><INPUT TYPE="TEXT" NAME="ldap_givenName" ID="ldap_givenName" VALUE="[% c.user.get('givenname') | html %]" /></DD>
+ <dt><label for="ldap_sn">Sobrenome</label></dt>
+ <dd><input type="text" name="ldap_sn" id="ldap_sn" value="[% c.user.get('sn') | html %]" /></dd>
 
- <DT><LABEL FOR="ldap_sn">Sobrenome</LABEL></DT>
- <DD><INPUT TYPE="TEXT" NAME="ldap_sn" ID="ldap_sn" VALUE="[% c.user.get('sn') | html %]" /></DD>
+ <dt><label for="ldap_email">Email</label></dt>
+ <dd><input type="text" name="ldap_email" id="ldap_email" value="[% c.user.get('email') | html %]" /></dd>
 
- <DT><LABEL FOR="ldap_email">Email</LABEL></DT>
- <DD><INPUT TYPE="TEXT" NAME="ldap_email" ID="ldap_email" VALUE="[% c.user.get('email') | html %]" /></DD>
+ <dt><label for="ldap_telephonenumber">Telefone</label></dt>
+ <dd><input type="text" name="ldap_telephonenumber" id="ldap_telephonenumber" value="[% c.user.get('telephonenumber') | html %]" /></dd>
 
- <DT><LABEL FOR="ldap_telephonenumber">Telefone</LABEL></DT>
- <DD><INPUT TYPE="TEXT" NAME="ldap_telephonenumber" ID="ldap_telephonenumber" VALUE="[% c.user.get('telephonenumber') | html %]" /></DD>
+ <dt><label for="ldap_mobile">Celular</label></dt>
+ <dd><input type="text" name="ldap_mobile" id="ldap_mobile" value="[% c.user.get('mobile') | html %]" /></dd>
 
- <DT><LABEL FOR="ldap_mobile">Celular</LABEL></DT>
- <DD><INPUT TYPE="TEXT" NAME="ldap_mobile" ID="ldap_mobile" VALUE="[% c.user.get('mobile') | html %]" /></DD>
+ <dt><label for="ldap_matricula">Matricula</label></dt>
+ <dd><input type="text" name="ldap_matricula" id="ldap_matricula" value="[% c.user.get('matricula') | html %]" /></dd>
+ </dl>
 
- <DT><LABEL FOR="ldap_matricula">Matricula</LABEL></DT>
- <DD><INPUT TYPE="TEXT" NAME="ldap_matricula" ID="ldap_matricula" VALUE="[% c.user.get('matricula') | html %]" /></DD>
+	<dl id="inform_col2">
+	[% IF c.user.has_attribute('memberof') %]
+	 <dt>Grupos</dt>
+	 <dd>
+		 <ul>
+		  [% FOREACH g IN c.user.get('memberof') -%]
+		  <li>[% g %]</li>
+		  [% END -%]
+		 </ul>
+	 </dd>
+	[% END %]
+	
+	[% IF c.user.has_attribute('idconsistrh') %]
+	 <dt>Referência RH</dt>
+	 <dd>
+	 <ul>
+	  [% FOREACH g IN c.user.get('idconsistrh') -%]
+	  <li>[% g %]</li>
+	  [% END -%]
+	 </ul>
+	 </dd>
+	[% END %]
+	
+	[% IF c.user.has_attribute('idusuariospu') %]
+	 <dt>Usuário SPU</dt>
+	<dd> 
+	 <ul>
+	  [% FOREACH g IN c.user.get('idusuariospu') -%]
+	  <li>[% g %]</li>
+	  [% END -%]
+	 </ul>
+	 </dd>
+	[% END %]
+	</dl>
 
-[% IF c.user.has_attribute('memberof') %]
- <DT>Grupos</DT>
- <UL>
-  [% FOREACH g IN c.user.get('memberof') -%]
-  <LI>[% g %]</LI>
-  [% END -%]
- </UL>
-[% END %]
-
-[% IF c.user.has_attribute('idconsistrh') %]
- <DT>Referência RH</DT>
- <UL>
-  [% FOREACH g IN c.user.get('idconsistrh') -%]
-  <LI>[% g %]</LI>
-  [% END -%]
- </UL>
-[% END %]
-
-[% IF c.user.has_attribute('idusuariospu') %]
- <DT>Usuário SPU</DT>
- <UL>
-  [% FOREACH g IN c.user.get('idusuariospu') -%]
-  <LI>[% g %]</LI>
-  [% END -%]
- </UL>
-[% END %]
-</DL>
-
-<INPUT TYPE="SUBMIT" VALUE="Atualizar" />
-
-</FORM>
+<div class="clear"></div>
+<div class="controls">
+<input type="submit" value="Atualizar" />
+</div>
+</fieldset>
+</form>
 
 [% INCLUDE 'footer.tt' %]
