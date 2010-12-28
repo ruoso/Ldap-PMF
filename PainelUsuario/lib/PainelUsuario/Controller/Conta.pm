@@ -12,6 +12,15 @@ sub index :Chained('base') :PathPart('') :Args(0) {}
 
 sub update :Chained('base') :PathPart :Args(0) {
   my ($self, $c) = @_;
+  try {
+    $c->model('LDAP')->update_self($c->user, $c->req->params);
+    $c->stash->{sucesso} = 'dados alterados';
+    $c->res->redirect($c->uri_for_action('/conta/index'));
+  } catch {
+    $c->stash->{erro} = 'erro-desconhecido';
+    $c->stash->{errolong} = $_;
+    $c->stash->{template} = 'conta/index.tt';
+  };
 }
 
 sub senha :Chained('base') :PathPart :Args(0) {

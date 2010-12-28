@@ -1,6 +1,9 @@
 [% INCLUDE 'header.tt' %]
 [% INCLUDE 'menu.tt' %]
 
+[% erro %][% errolong %]
+[% sucesso %]
+
 <FORM METHOD="POST" ACTION="[% c.uri_for_action('/conta/update') %]">
 <DL>
 

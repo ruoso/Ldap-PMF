@@ -33,6 +33,12 @@ sub home :Chained('authbase') :PathPart('') :Args(0) {
   }
 }
 
+sub logout :Chained('authbase') :PathPart :Args(0) {
+  my ($self, $c) = @_;
+  $c->logout;
+  $c->res->redirect($c->uri_for_action('/login/login'));
+}
+
 sub end : ActionClass('RenderView') {}
 
 __PACKAGE__->meta->make_immutable;

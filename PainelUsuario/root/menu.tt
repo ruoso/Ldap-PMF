@@ -4,4 +4,5 @@
 [% IF c.model('LDAP').is_operador(c.user) %]
  <LI><A HREF="[% c.uri_for_action('/admin/index') %]">Gerir Contas</A></LI>
 [% END %]
+ <LI><A HREF="[% c.uri_for_action('/logout') %]">Sair</A></LI>
 </UL>

@@ -49,4 +49,36 @@ sub change_self_password {
   die 'change-failed' if $mesg->is_error;
 }
 
+my @update_fields =
+  qw( cn sn givenname email idconsistrh idusuariospu
+      telephonenumber mobile memberof );
+
+sub update_self {
+  my ($self, $user, $args) = @_;
+  my $mesg = $self->ldap->modify
+    ( $user->dn,
+      replace =>
+      { map { $_ => $args->{$_} }
+        grep { exists $args->{$_} &&
+                 $args->{$_} &&
+                   $user->has_attribute($_) &&
+                     $args->{$_} ne $user->get($_) }
+        @update_fields
+      },
+      add =>
+      { map { $_ => $args->{$_} }
+        grep { exists $args->{$_} &&
+                 $args->{$_} &&
+                   !$user->has_attribute($_) }
+        @update_fields
+      },
+      delete =>
+      { grep { !$args->{$_} &&
+                 $user->has_attribute($_) }
+        @update_fields
+      },
+    );
+  die 'change-failed: '.$mesg->error if $mesg->is_error;
+}
+
 1;
