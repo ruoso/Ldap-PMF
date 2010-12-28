@@ -1,0 +1,14 @@
+[% INCLUDE 'header.tt' %]
+
+<FORM METHOD="POST" ACTION="[% c.uri_for_action('/login/login') %]">
+ <LABEL>Usuário <INPUT NAME="username" /></LABEL>
+ <LABEL>Domínio <SELECT NAME="dominio">
+[% FOREACH dom IN c.model('LDAP').buscar_dominios_auth -%]
+                  <option value="[% dom.dn %]">[% dom.get_value('o') %]</option>
+[% END -%]
+                </SELECT></LABEL>
+ <LABEL>Senha <INPUT NAME="password" TYPE="password"></LABEL>
+ <INPUT TYPE="SUBMIT" VALUE="Entrar" />
+</FORM>
+
+[% INCLUDE 'footer.tt' %]

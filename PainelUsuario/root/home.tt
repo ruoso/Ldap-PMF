@@ -1,0 +1,4 @@
+[% INCLUDE 'header.tt' %]
+[% INCLUDE 'menu.tt' %]
+
+[% INCLUDE 'footer.tt' %]

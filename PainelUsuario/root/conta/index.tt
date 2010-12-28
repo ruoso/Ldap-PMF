@@ -1,0 +1,63 @@
+[% INCLUDE 'header.tt' %]
+[% INCLUDE 'menu.tt' %]
+
+<FORM METHOD="POST" ACTION="[% c.uri_for_action('/conta/update') %]">
+<DL>
+
+ <DT>Login</DT>
+ <DD>[% c.user.get('uid') %] - <A HREF="[% c.uri_for_action('/conta/senha') %]">Alterar Senha</A></DD>
+
+ <DT><LABEL FOR="ldap_cn">Nome para Exibição</LABEL></DT>
+ <DD><INPUT TYPE="TEXT" NAME="ldap_cn" ID="ldap_cn" VALUE="[% c.user.get('cn') | html %]" /></DD>
+
+ <DT><LABEL FOR="ldap_givenName">Nome Próprio</LABEL></DT>
+ <DD><INPUT TYPE="TEXT" NAME="ldap_givenName" ID="ldap_givenName" VALUE="[% c.user.get('givenname') | html %]" /></DD>
+
+ <DT><LABEL FOR="ldap_sn">Sobrenome</LABEL></DT>
+ <DD><INPUT TYPE="TEXT" NAME="ldap_sn" ID="ldap_sn" VALUE="[% c.user.get('sn') | html %]" /></DD>
+
+ <DT><LABEL FOR="ldap_email">Email</LABEL></DT>
+ <DD><INPUT TYPE="TEXT" NAME="ldap_email" ID="ldap_email" VALUE="[% c.user.get('email') | html %]" /></DD>
+
+ <DT><LABEL FOR="ldap_telephonenumber">Telefone</LABEL></DT>
+ <DD><INPUT TYPE="TEXT" NAME="ldap_telephonenumber" ID="ldap_telephonenumber" VALUE="[% c.user.get('telephonenumber') | html %]" /></DD>
+
+ <DT><LABEL FOR="ldap_mobile">Celular</LABEL></DT>
+ <DD><INPUT TYPE="TEXT" NAME="ldap_mobile" ID="ldap_mobile" VALUE="[% c.user.get('mobile') | html %]" /></DD>
+
+ <DT><LABEL FOR="ldap_matricula">Matricula</LABEL></DT>
+ <DD><INPUT TYPE="TEXT" NAME="ldap_matricula" ID="ldap_matricula" VALUE="[% c.user.get('matricula') | html %]" /></DD>
+
+[% IF c.user.has_attribute('memberof') %]
+ <DT>Grupos</DT>
+ <UL>
+  [% FOREACH g IN c.user.get('memberof') -%]
+  <LI>[% g %]</LI>
+  [% END -%]
+ </UL>
+[% END %]
+
+[% IF c.user.has_attribute('idconsistrh') %]
+ <DT>Referência RH</DT>
+ <UL>
+  [% FOREACH g IN c.user.get('idconsistrh') -%]
+  <LI>[% g %]</LI>
+  [% END -%]
+ </UL>
+[% END %]
+
+[% IF c.user.has_attribute('idusuariospu') %]
+ <DT>Usuário SPU</DT>
+ <UL>
+  [% FOREACH g IN c.user.get('idusuariospu') -%]
+  <LI>[% g %]</LI>
+  [% END -%]
+ </UL>
+[% END %]
+</DL>
+
+<INPUT TYPE="SUBMIT" VALUE="Atualizar" />
+
+</FORM>
+
+[% INCLUDE 'footer.tt' %]

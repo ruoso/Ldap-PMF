@@ -1,0 +1,18 @@
+[% INCLUDE 'header.tt' %]
+[% INCLUDE 'menu.tt' %]
+
+<FORM METHOD="POST" ACTION="[% c.uri_for_action('/conta/senha') %]">
+<DL>
+  <DT>Senha Atual:</DT>
+  <DD><INPUT TYPE="PASSWORD" NAME="senha_atual" /></DD>
+  <DT>Nova Senha:</DT>
+  <DD><INPUT TYPE="PASSWORD" NAME="senha1" /></DD>
+  <DT>Confirme a Nova Senha:</DT>
+  <DD><INPUT TYPE="PASSWORD" NAME="senha2" /></DD>
+</DL>
+
+<INPUT TYPE="submit" VALUE="Alterar Senha" />
+
+</FORM>
+
+[% INCLUDE 'footer.tt' %]
