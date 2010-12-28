@@ -13,9 +13,9 @@ has role_operador => (is => 'ro', required => 1);
 sub _bind_ldap {
   my $self = shift;
   my $host = $self->ldap_config->{host};
-  my $conn = Net::LDAP->new($host, %{$self->{ldap_config}})
+  my $conn = Net::LDAP->new($host, %{$self->ldap_config})
     or die "$@";
-  my $mesg = $conn->bind;
+  my $mesg = $conn->bind($self->ldap_config->{dn}, %{$self->ldap_config});
   croak 'LDAP error: ' . $mesg->error if $mesg->is_error;
   return $conn;
 }
@@ -50,35 +50,47 @@ sub change_self_password {
 }
 
 my @update_fields =
-  qw( cn sn givenname email idconsistrh idusuariospu
-      telephonenumber mobile memberof );
+  qw( cn sn givenname email
+      telephonenumber mobile );
 
 sub update_self {
   my ($self, $user, $args) = @_;
+  my %replace =
+    map { $_ => $args->{$_} }
+      grep { exists $args->{$_} &&
+               $args->{$_} &&
+                 $user->has_attribute($_) &&
+                   $args->{$_} ne $user->get($_) }
+        @update_fields;
+  my %add =
+    map { $_ => $args->{$_} }
+      grep { exists $args->{$_} &&
+               $args->{$_} &&
+                 !$user->has_attribute($_) }
+        @update_fields;
+  my @delete =
+    grep { !$args->{$_} &&
+             $user->has_attribute($_) }
+      @update_fields;
+
+  return unless %replace or %add or @delete;
+
   my $mesg = $self->ldap->modify
     ( $user->dn,
-      replace =>
-      { map { $_ => $args->{$_} }
-        grep { exists $args->{$_} &&
-                 $args->{$_} &&
-                   $user->has_attribute($_) &&
-                     $args->{$_} ne $user->get($_) }
-        @update_fields
-      },
-      add =>
-      { map { $_ => $args->{$_} }
-        grep { exists $args->{$_} &&
-                 $args->{$_} &&
-                   !$user->has_attribute($_) }
-        @update_fields
-      },
-      delete =>
-      { grep { !$args->{$_} &&
-                 $user->has_attribute($_) }
-        @update_fields
-      },
+      %replace ? (replace => \%replace) : (),
+      %add ? (add => \%add) : (),
+      @delete ? (delete => \@delete) : (),
     );
   die 'change-failed: '.$mesg->error if $mesg->is_error;
+}
+
+sub decompose_dn {
+  my ($self, $dn) = @_;
+  my $base = $self->ldap_config->{base};
+  # remove o sufixo.
+  my $prefix = substr($dn, 0, 0 - length($base));
+  return [ map { (split /=/)[1] }
+           split /,/, $prefix  ];
 }
 
 1;

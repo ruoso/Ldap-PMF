@@ -13,7 +13,13 @@ sub index :Chained('base') :PathPart('') :Args(0) {}
 sub update :Chained('base') :PathPart :Args(0) {
   my ($self, $c) = @_;
   try {
-    $c->model('LDAP')->update_self($c->user, $c->req->params);
+    my %args =
+      map { my $k = lc($_);
+            $k =~ s/^ldap_//;
+            ($k => $c->req->param($_))
+          }
+        keys %{$c->req->params};
+    $c->model('LDAP')->update_self($c->user, \%args);
     $c->stash->{sucesso} = 'dados alterados';
     $c->res->redirect($c->uri_for_action('/conta/index'));
   } catch {

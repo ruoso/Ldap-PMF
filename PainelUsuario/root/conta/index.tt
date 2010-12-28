@@ -40,14 +40,14 @@
 	 <dd>
 		 <ul>
 		  [% FOREACH g IN c.user.get('memberof') -%]
-		  <li>[% g %]</li>
+		  <li>[% c.model('LDAP').decompose_dn(g).reverse.join(' - ') %]</li>
 		  [% END -%]
 		 </ul>
 	 </dd>
 	[% END %]
 	
 	[% IF c.user.has_attribute('idconsistrh') %]
-	 <dt>Referência RH</dt>
+	 <dt>RH</dt>
 	 <dd>
 	 <ul>
 	  [% FOREACH g IN c.user.get('idconsistrh') -%]
@@ -58,7 +58,7 @@
 	[% END %]
 	
 	[% IF c.user.has_attribute('idusuariospu') %]
-	 <dt>Usuário SPU</dt>
+	 <dt>SPU</dt>
 	<dd> 
 	 <ul>
 	  [% FOREACH g IN c.user.get('idusuariospu') -%]
