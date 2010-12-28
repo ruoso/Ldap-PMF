@@ -1,0 +1,2 @@
+[% SET mensagens =
+   { 'all-fields' => 'Preencha todos os campos' } -%]

@@ -460,39 +460,7 @@ ol.orderedList {
     text-shadow:1px 2px #fff;
     color: #000;
 }
-.instrucoes{
-    text-align: left;
-    padding: 0 18px;
-    border: solid 1px #ccc;
-    background: #fff;
-    margin: 10px auto;
-}
-.instrucoes_header{
-    text-align: center;
-    padding: 18px;
-    background: #ddd;
-    margin: 0 -18px;
-    font-size: 15px;
-    font-weight: bold;
-    line-height: 15px;
-    padding: 5px;
-    padding-left: 32px;
-    cursor: pointer;
-}
-.instrucoes_content{
-    margin: 15px;
-}
-.instrucoes_aberta{
-    background-image: url(images/up.png);
-    background-repeat: no-repeat;
-    background-position: right;
-    background-position: 99%;
-}
-.instrucoes_fechada{
-    background-image: url(images/down.png);
-    background-repeat: no-repeat;
-    background-position: 99%;
-}
+
 .link-info{
     width: 15px;
     height: 16px;
@@ -563,8 +531,9 @@ div.controls{
 
 /* Colunas para o fieldset Dados Pessoais */
 #inform_col1{
-	width: 40%;
+	width: 39.5%;
 	float: left;
+	border-right:1px solid #ccc
 }
 #inform_col2{
 	max-width: 60%;
@@ -573,12 +542,31 @@ div.controls{
 
 #nav{
 	background: #111;
-	height: 30px;
+	height: 2em;
+	float: left;
+	width: 100%;
 }
 #nav ul li{
-	width: 80px;
-	display: inline;
+	display: block;
+	width: 9em;
+	float: left;
 }
 #nav a{
-	color: #fff!important;
+	color: #fff;
+	display: block;
+   line-height: 2em;
+   border-right: 1px solid #666;
+   text-decoration: none;
+   padding-left: 1em;
+   padding-right: 1em;
+}
+#nav a:hover{
+	background: #333;
+}
+#mensagens{
+	background: #feb;
+	border: 1px dashed #990000;
+	padding: 10px;
+	text-align: center;
+	font-size: 1.2em;
 }

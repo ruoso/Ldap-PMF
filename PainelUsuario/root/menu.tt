@@ -1,11 +1,18 @@
 <div id='nav'>
-<UL>
- <LI><A HREF="[% c.uri_for_action('/conta/index') %]">Minha Conta</A></LI>
-[% IF c.model('LDAP').is_operador(c.user) %]
- <LI><A HREF="[% c.uri_for_action('/admin/index') %]">Gerir Contas</A></LI>
-[% END %]
- <LI><A HREF="[% c.uri_for_action('/logout') %]">Sair</A></LI>
-</UL>
+	<ul>
+		<li>
+			<a href="[% c.uri_for_action('/conta/index') %]">Minha Conta</a>
+		</li>
+		
+		[% IF c.model('LDAP').is_operador(c.user) -%]
+ 		<li>
+ 			<a href="[% c.uri_for_action('/admin/index') %]">Gerir contas</a>
+ 		</li>
+		[% END -%]
+
+	 	<li>
+	 		<a href="[% c.uri_for_action('/logout') %]">Sair</a>
+	 	</li>
+	</ul>
 </div>
 
-<div id="content"> 

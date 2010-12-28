@@ -1,8 +1,5 @@
-[% INCLUDE 'header.tt' %]
-[% INCLUDE 'menu.tt' %]
+[% INCLUDE 'header-auth.tt' %]
 
-[% erro %][% errolong %]
-[% sucesso %]
    
 <form method="post" action="[% c.uri_for_action('/conta/update') %]">
 <fieldset class="container_16 ui-corner-all">
@@ -76,4 +73,4 @@
 </fieldset>
 </form>
 
-[% INCLUDE 'footer.tt' %]
+[% INCLUDE 'footer-auth.tt' %]

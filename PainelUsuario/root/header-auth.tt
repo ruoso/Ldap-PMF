@@ -1,0 +1,12 @@
+[% INCLUDE 'header.tt' %]
+[% INCLUDE 'menu.tt' %]
+
+<div id="content">
+
+[% IF erro || sucesso %]
+[% PROCESS 'mensagens.tt' %]
+<div id='mensagens' class='container_16'>
+[% mensagens.item(erro) %]
+[% mensagens.item(sucesso) %]
+</div>
+[% END %]

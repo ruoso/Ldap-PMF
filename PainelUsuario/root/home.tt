@@ -1,4 +1,3 @@
-[% INCLUDE 'header.tt' %]
-[% INCLUDE 'menu.tt' %]
+[% INCLUDE 'header-auth.tt' %]
 
-[% INCLUDE 'footer.tt' %]
+[% INCLUDE 'footer-auth.tt' %]
