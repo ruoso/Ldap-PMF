@@ -1,6 +1,9 @@
 [% INCLUDE 'header.tt' %]
 [% INCLUDE 'menu.tt' %]
 
+[% erro %]
+[% sucesso %]
+
 <FORM METHOD="POST" ACTION="[% c.uri_for_action('/conta/senha') %]">
 <DL>
   <DT>Senha Atual:</DT>

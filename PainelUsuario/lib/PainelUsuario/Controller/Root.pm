@@ -17,6 +17,9 @@ sub default :Chained('base') :PathPart('') :Args {
 
 sub authbase :Chained('base') :PathPart('') :CaptureArgs(0) {
   my ($self, $c) = @_;
+  $c->get_auth_realm
+    (PainelUsuario->config->{'Plugin::Authentication'}{default_realm})
+      ->store->user_basedn($c->session->{dominio});
   unless ($c->user) {
     $c->res->redirect($c->uri_for_action('/login/login'));
     $c->detach;

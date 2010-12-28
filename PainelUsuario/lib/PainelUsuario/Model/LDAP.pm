@@ -2,6 +2,7 @@ package PainelUsuario::Model::LDAP;
 use Net::LDAP;
 use Moose;
 use Carp qw(croak);
+use Digest::SHA qw(sha1_base64);
 extends 'Catalyst::Model';
 
 has ldap_config => (is => 'ro', required => 1);
@@ -33,6 +34,17 @@ sub buscar_dominios_auth {
 sub is_operador {
   my ($self, $user) = @_;
   return grep { $_ eq $self->role_operador } @{$user->memberof};
+}
+
+sub change_self_password {
+  my ($self, $user, $curr_password, $new_password) = @_;
+  my $encrypted = '{SHA}'.sha1_base64($new_password);
+  my $host = $self->ldap_config->{host};
+  my $ldap = Net::LDAP->new($host, %{$self->{ldap_config}})
+    or die "$@";
+  my $mesg = $ldap->bind($user->dn, $curr_password);
+  die 'bind-failed' if $mesg->is_error;
+  
 }
 
 1;
