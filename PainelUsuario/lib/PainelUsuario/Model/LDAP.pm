@@ -34,7 +34,9 @@ sub buscar_dominios_auth {
 sub is_operador {
   my ($self, $user) = @_;
   return unless $user->has_attribute('memberof');
-  return grep { $_ eq $self->role_operador } @{$user->get('memberof')};
+  my $roles = $user->get('memberof');
+  $roles = [ $roles ] unless ref $roles eq 'ARRAY';
+  return grep { $_ eq $self->role_operador } @{$roles};
 }
 
 sub change_self_password {
