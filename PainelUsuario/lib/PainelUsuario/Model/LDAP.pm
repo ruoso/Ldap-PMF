@@ -1,6 +1,6 @@
 package PainelUsuario::Model::LDAP;
 use Net::LDAP;
-use Net::LDAP::Constant qw(LDAP_SERVER_DOWN);
+use Net::LDAP::Constant qw(LDAP_SERVER_DOWN LDAP_CONNECT_ERROR);
 use Moose;
 use Carp qw(croak);
 use Digest::SHA qw(sha1_base64);
@@ -29,11 +29,13 @@ sub buscar_dominios_auth {
       scope  => 'one'
     );
   if ($mesg->is_error) {
-    if ($mesg->code == LDAP_SERVER_DOWN) {
+    if ($mesg->code == LDAP_SERVER_DOWN ||
+	$mesg->code == LDAP_CONNECT_ERROR) {
+      warn "Reconnecting to LDAP server";
       $self->ldap($self->_bind_ldap);
       return $self->buscar_dominios_auth();
     } else {
-      croak 'LDAP error: ' . $mesg->error;
+      croak 'LDAP error: ' . $mesg->error . ' ('.$mesg->code.')';
     }
   }
   return $mesg->sorted('o');
