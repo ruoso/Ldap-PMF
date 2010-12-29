@@ -1,5 +1,6 @@
 package PainelUsuario::Model::LDAP;
 use Net::LDAP;
+use Net::LDAP::Constant qw(LDAP_SERVER_DOWN);
 use Moose;
 use Carp qw(croak);
 use Digest::SHA qw(sha1_base64);
@@ -27,7 +28,14 @@ sub buscar_dominios_auth {
       filter => "(&(objectClass=*))",
       scope  => 'one'
     );
-  croak 'LDAP error: ' . $mesg->error if $mesg->is_error;
+  if ($mesg->is_error) {
+    if ($mesg->code == LDAP_SERVER_DOWN) {
+      $self->ldap($self->_bind_ldap);
+      return $self->buscar_dominios_auth();
+    } else {
+      croak 'LDAP error: ' . $mesg->error;
+    }
+  }
   return $mesg->sorted('o');
 }
 
